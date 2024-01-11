@@ -1,19 +1,19 @@
 #include "monty.h"
 
 /**
- * push_func - pushes an element to the stack
- * @opcode: pointer to the string
- * @top_stack: linear data structure
- * @line: number of the line of the command
+ * push - Pushes an element to the stack.
+ * @opcode: Pointer to a string.
+ * @top: Pointer to the top of a stack.
+ * @line: Line number.
  *
- * Return: void
+ * Return: Void.
  */
-void push_func(char *opcode, stack_t **top_stack, unsigned int line)
+void push(char *opcode, stack_t **top, unsigned int line)
 {
-	stack_t *new;
+	stack_t *stack;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	stack = malloc(sizeof(stack_t));
+	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
@@ -21,18 +21,18 @@ void push_func(char *opcode, stack_t **top_stack, unsigned int line)
 	}
 	if (isnum(opcode) == 1 && opcode != NULL)
 	{
-		new->n = atoi(opcode);
-		new->next = *top_stack;
-		new->prev = NULL;
+		stack->n = atoi(opcode);
+		stack->next = *top;
+		stack->prev = NULL;
 	}
 	else
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if (*top_stack != NULL)
-		(*top_stack)->prev = new;
-	*top_stack = new;
+	if (*top != NULL)
+		(*top)->prev = stack;
+	*top = stack;
 }
 
 /**

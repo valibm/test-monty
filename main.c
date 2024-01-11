@@ -57,7 +57,7 @@ void get_com(FILE *file, stack_t **stack)
 		if (strcmp(token, "push") == 0)
 		{
 			token = strtok(NULL, "\n\t\r ");
-			push_func(token, stack, counter);
+			push(token, stack, counter);
 		}
 		else
 			check_ops(token, stack, counter);
