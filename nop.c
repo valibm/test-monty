@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * nop_func - doesn’t do anything
- * @stack: stack
- * @line: line number of the command
+ * nop - Doesn’t do anything.
+ * @stack: Pointer to the top of a line.
+ * @line: Number of a line.
  *
- * Return: void
+ * Return: Void.
  */
 
-void nop_func(stack_t **stack, unsigned int line)
+void nop(stack_t **stack, unsigned int line)
 {
 	(void) stack;
 	(void) line;

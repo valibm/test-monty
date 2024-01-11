@@ -45,10 +45,10 @@ void free_stack(stack_t *stack);
 void push(char *opcode, stack_t **top, unsigned int line);
 void pall(stack_t **stack, unsigned int __attribute__((unused)) line);
 int isnum(char *opcode);
-void pop_func(stack_t **stack, unsigned int line);
-void swap_func(stack_t **stack, unsigned int line);
-void add_func(stack_t **stack, unsigned int line);
-void nop_func(stack_t **stack, unsigned int line);
-void pint_func(stack_t **sstack, unsigned int __attribute((unused)) line);
+void pop(stack_t **stack, unsigned int line);
+void swap(stack_t **stack, unsigned int line);
+void add(stack_t **stack, unsigned int line);
+void nop(stack_t **stack, unsigned int line);
+void pint(stack_t **stack, unsigned int __attribute((unused)) line);
 
 #endif

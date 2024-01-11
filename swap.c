@@ -1,29 +1,29 @@
 #include "monty.h"
 
 /**
- * swap_func - swaps the top two elements of the stack
- * @stack: stack of elements
- * @line: line number of the command
+ * swap - Swaps the top two elements of the stack.
+ * @stack: Pointer to the top of a stack.
+ * @line: Number of the line.
  *
- * Return: void
+ * Return: Void.
  */
 
-void swap_func(stack_t **stack, unsigned int line)
+void swap(stack_t **stack, unsigned int line)
 {
-	stack_t *current;
+	stack_t *tmp;
 	stack_t *node;
 
-	current = *stack;
+	tmp = *stack;
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 
-	node = current->next;
-	current->next = node->next;
+	node = tmp->next;
+	tmp->next = node->next;
 	node->next = *stack;
-	current->prev = node;
+	tmp->prev = node;
 	node->prev = NULL;
 	*stack = node;
 }

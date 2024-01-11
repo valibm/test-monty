@@ -1,34 +1,27 @@
 #include "monty.h"
 
 /**
- * add_func - adds the top two elements of the stack
- * @stack: stack
- * @line: line number of the command
+ * add - Adds the top two elements of the stack
+ * @stack: Pointer to the top of a stack.
+ * @line: Number of a line.
  *
- * Return: void
+ * Return: Void.
  */
 
-void add_func(stack_t **stack, unsigned int line)
+void add(stack_t **stack, unsigned int line)
 {
-	int first;
-	int second;
-	int result;
-	stack_t *top;
+	int addition;
+	stack_t *tmp;
 
-	top = *stack;
+	tmp = *stack;
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 
-	first = top->n;
-	second = top->next->n;
-	result = first + second;
+        addition = tmp->n + tmp->next->n;
+	pop(stack, line);
 
-	pop_func(stack, line);
-
-	(*stack)->n = result;
-
-
+	(*stack)->n = addition;
 }

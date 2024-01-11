@@ -1,24 +1,23 @@
 #include "monty.h"
 
 /**
- * pint_func - prints the value at the top of the stack
- * @sstack: name of the stack
- * @line: line number of the command
- *
- * Return: void
+ * pint - Prints the value at the top of the stack, followed by a new line.
+ * @stack: Pointer to the top of a stack.
+ * @line: Number of the line.
+ * Return: Void.
  */
 
-void pint_func(stack_t **sstack, unsigned int line)
+void pint(stack_t **stack, unsigned int line)
 {
-	stack_t *current;
+	stack_t *tmp;
 
-	current = *sstack;
+	tmp = *stack;
 
-	if (!sstack || !*sstack)
+	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", current->n);
+	printf("%d\n", tmp->n);
 }

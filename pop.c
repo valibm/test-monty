@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * pop_func - removes the top element of the stack
- * @stack: stack where top will be removed
- * @line: kine number of the command
+ * pop - Removes the top element of the stack.
+ * @stack: Pointer to the top of a stack.
+ * @line: Number of the line.
  *
- * Retunr: void
+ * Retunr: Void.
  */
 
-void pop_func(stack_t **stack, unsigned int line)
+void pop(stack_t **stack, unsigned int line)
 {
 	stack_t *top;
 
