@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	get_com(fd, &stack);
+        handle_com(fd, &stack);
 	free_stack(stack);
 	fclose(fd);
 
@@ -35,13 +35,13 @@ int main(int argc, char *argv[])
 }
 
 /**
- * get_com - Gets command from monty file.
+ * handle_com - Gets command from monty file.
  * @file: File to read to gets the command.
  * @stack: Linear data structure.
  *
  * Return: Void.
  */
-void get_com(FILE *file, stack_t **stack)
+void handle_com(FILE *file, stack_t **stack)
 {
 	char *opcode, *token = NULL;
 	size_t size = 0;

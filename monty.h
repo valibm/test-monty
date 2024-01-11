@@ -39,7 +39,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int);
 } instruction_t;
 
-void get_com(FILE *file, stack_t **stack);
+void handle_com(FILE *file, stack_t **stack);
 void check_ops(char *opcode, stack_t **stack, unsigned int line);
 void free_stack(stack_t *stack);
 void push(char *opcode, stack_t **top, unsigned int line);
