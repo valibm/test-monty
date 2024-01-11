@@ -19,7 +19,7 @@ void push_func(char *opcode, stack_t **top_stack, unsigned int line)
 		exit(EXIT_FAILURE);
 		return;
 	}
-	if (_isnumber(opcode) == 1 && opcode != NULL)
+	if (isnum(opcode) == 1 && opcode != NULL)
 	{
 		new->n = atoi(opcode);
 		new->next = *top_stack;

@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	}
 
 	get_com(fd, &stack);
-	mem_free(stack);
+	free_stack(stack);
 	fclose(fd);
 
 	exit(EXIT_SUCCESS);
@@ -60,7 +60,7 @@ void get_com(FILE *file, stack_t **stack)
 			push_func(token, stack, counter);
 		}
 		else
-			get_func(token, stack, counter);
+			check_ops(token, stack, counter);
 	}
 
 	free(opcode);

@@ -1,18 +1,18 @@
 #include "monty.h"
 
 /**
- * get_func - gets the function
- * @opcode: requested function
- * @cp_stack: linear data structure
- * @line: line number
+ * check_ops - Checks the opcode in the line
+ * @opcode: Requested function
+ * @stack: Pointer to the top of the stack
+ * @line: Line number
  *
- * Return: function pointer or EXIT_FAILURE if it fails
+ * Return: Function pointer or EXIT_FAILURE if it fails
  */
-void get_func(char *opcode, stack_t **cp_stack, unsigned int line)
+void check_ops(char *opcode, stack_t **stack, unsigned int line)
 {
-	int index = 0;
+	int i = 0;
 
-	instruction_t function[] = {
+	instruction_t opcodes[] = {
 		{"pall", pall_func},
 		{"pint",  pint_func},
 		{"pop", pop_func},
@@ -22,17 +22,17 @@ void get_func(char *opcode, stack_t **cp_stack, unsigned int line)
 		{NULL, NULL}
 	};
 
-	while (function[index].opcode)
+	while (opcodes[i].opcode)
 	{
-		if (strcmp(function[index].opcode, opcode) == 0)
+		if (strcmp(opcodes[i].opcode, opcode) == 0)
 		{
-			function[index].f(cp_stack, line);
+			opcodes[i].f(stack, line);
 			break;
 		}
-		index++;
+		i++;
 	}
 
-	if (function[index].opcode == NULL)
+	if (opcodes[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
 		exit(EXIT_FAILURE);
@@ -41,47 +41,45 @@ void get_func(char *opcode, stack_t **cp_stack, unsigned int line)
 
 
 /**
- * mem_free - free stack memory
- * @head: pointer to the top of the stack
- *
- * Return: void
+ * free_stack - Frees a stack.
+ * @stack: Pointer to the top of the stack.
+ * Return: Void.
  */
-void mem_free(stack_t *head)
+void free_stack(stack_t *stack)
 {
 	stack_t *temp;
 
-	while (head != NULL)
+	while (stack != NULL)
 	{
-		temp = head->next;
-		free(head);
-		head = temp;
+		temp = stack->next;
+		free(stack);
+		stack = temp;
 	}
 }
 
 /**
- * _isnumber - checks for numbers
- * @opcode: string to check
- *
- * Return: 1 if true, 0 otherwise
+ * isnum - Checks a string for numbers.
+ * @opcode: String to be checked.
+ * Return: 1 if true, 0 otherwise.
  */
 
-int _isnumber(char *opcode)
+int isnum(char *opcode)
 {
-	unsigned int index = 0;
+	unsigned int i = 0;
 
 	if (opcode == NULL)
 		return (0);
 
-	while (opcode[index])
+	while (opcode[i])
 	{
 		if (opcode[0] == '-')
 		{
-			index++;
+			i++;
 			continue;
 		}
-		if (!isdigit(opcode[index]))
+		if (!isdigit(opcode[i]))
 			return (0);
-		index++;
+		i++;
 	}
 	return (1);
 }

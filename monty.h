@@ -40,11 +40,11 @@ typedef struct instruction_s
 } instruction_t;
 
 void get_com(FILE *file, stack_t **stack);
-void get_func(char *opcode, stack_t **cp_stack, unsigned int line);
-void mem_free(stack_t *head);
+void check_ops(char *opcode, stack_t **stack, unsigned int line);
+void free_stack(stack_t *stack);
 void push_func(char *opcode, stack_t **top_stack, unsigned int line);
 void pall_func(stack_t **sstack, unsigned int __attribute__((unused)) line);
-int _isnumber(char *opcode);
+int isnum(char *opcode);
 void pop_func(stack_t **stack, unsigned int line);
 void swap_func(stack_t **stack, unsigned int line);
 void add_func(stack_t **stack, unsigned int line);
