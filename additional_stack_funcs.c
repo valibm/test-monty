@@ -7,7 +7,6 @@
  *
  * Return: Void.
  */
-
 void add(stack_t **stack, unsigned int line)
 {
 	int addition;
@@ -24,4 +23,18 @@ void add(stack_t **stack, unsigned int line)
 	pop(stack, line);
 
 	(*stack)->n = addition;
+}
+
+
+/**
+ * nop - Doesn’t do anything.
+ * @stack: Pointer to the top of a line.
+ * @line: Number of a line.
+ *
+ * Return: Void.
+ */
+void nop(stack_t **stack, unsigned int line)
+{
+	(void) stack;
+	(void) line;
 }

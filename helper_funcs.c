@@ -1,6 +1,39 @@
 #include "monty.h"
 
 /**
+ * handle_com - Gets command from monty file.
+ * @file: File to read to gets the command.
+ * @stack: Linear data structure.
+ *
+ * Return: Void.
+ */
+void handle_com(FILE *file, stack_t **stack)
+{
+	char *opcode, *token = NULL;
+	size_t size = 0;
+	int counter = 0;
+
+	while (getline(&opcode, &size, file) != -1)
+	{
+		counter++;
+		token = strtok(opcode, "\n\t\r ");
+		if (token == NULL || *token == '#')
+			continue;
+
+		if (strcmp(token, "push") == 0)
+		{
+			token = strtok(NULL, "\n\t\r ");
+			push(token, stack, counter);
+		}
+		else
+			check_ops(token, stack, counter);
+	}
+
+	free(opcode);
+}
+
+
+/**
  * check_ops - Checks the opcode in the line
  * @opcode: Requested function
  * @stack: Pointer to the top of the stack
@@ -57,12 +90,12 @@ void free_stack(stack_t *stack)
 	}
 }
 
+
 /**
  * isnum - Checks a string for numbers.
  * @opcode: String to be checked.
  * Return: 1 if true, 0 otherwise.
  */
-
 int isnum(char *opcode)
 {
 	unsigned int i = 0;
