@@ -43,7 +43,7 @@ void get_com(FILE *file, stack_t **stack);
 void check_ops(char *opcode, stack_t **stack, unsigned int line);
 void free_stack(stack_t *stack);
 void push(char *opcode, stack_t **top, unsigned int line);
-void pall_func(stack_t **sstack, unsigned int __attribute__((unused)) line);
+void pall(stack_t **stack, unsigned int __attribute__((unused)) line);
 int isnum(char *opcode);
 void pop_func(stack_t **stack, unsigned int line);
 void swap_func(stack_t **stack, unsigned int line);

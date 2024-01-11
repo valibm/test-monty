@@ -36,24 +36,24 @@ void push(char *opcode, stack_t **top, unsigned int line)
 }
 
 /**
- * pall_func - prints all the values on the stack
- * @sstack: linear data structure
- * @line: unused attribute
- *
- * Return: void
+ * pall - Prints all the values on the stack,
+ *        starting from the top of the stack.
+ * @stack: Pointer to the top of a stack.
+ * @line: Unused.
+ * Return: Void.
  */
-void pall_func(stack_t **sstack, unsigned int __attribute__((unused)) line)
+void pall(stack_t **stack, unsigned int __attribute__((unused)) line)
 {
-	int index = 0;
-	stack_t *current;
+	int i = 0;
+	stack_t *tmp;
 
-	current = *sstack;
+	tmp = *stack;
 
-	while (current)
+	while (tmp)
 	{
-		if (current != NULL)
-		printf("%d\n", current->n);
-		index++;
-		current = current->next;
+		if (tmp != NULL)
+		printf("%d\n", tmp->n);
+		i++;
+		tmp = tmp->next;
 	}
 }

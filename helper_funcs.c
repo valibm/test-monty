@@ -13,7 +13,7 @@ void check_ops(char *opcode, stack_t **stack, unsigned int line)
 	int i = 0;
 
 	instruction_t opcodes[] = {
-		{"pall", pall_func},
+		{"pall", pall},
 		{"pint",  pint_func},
 		{"pop", pop_func},
 		{"swap", swap_func},
